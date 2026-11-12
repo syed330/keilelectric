@@ -1,0 +1,43 @@
+# Keil Pipeline Scorecard on Netlify — pages and APIs are Netlify Functions (TypeScript), data lives in Supabase.
+[build]
+  publish = "public"
+  command = "npm run typecheck"
+
+[functions]
+  node_bundler = "esbuild"
+  included_files = []
+
+# Static files: long cache for libraries, short for app CSS/JS (they change with deploys).
+[[headers]]
+  for = "/assets/vendor/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=300"
+    X-Content-Type-Options = "nosniff"
+[[headers]]
+  for = "/downloads/*"
+  [headers.values]
+    Cache-Control = "public, max-age=300"
+    Content-Disposition = "attachment"
+
+# Old PHP addresses keep working.
+[[redirects]]
+  from = "/index.php"
+  to = "/"
+  status = 301
+[[redirects]]
+  from = "/pipelines.php"
+  to = "/pipelines"
+  status = 301
+[[redirects]]
+  from = "/export.php"
+  to = "/export"
+  status = 301
+  query = {key = ":key", view = ":view"}
+[[redirects]]
+  from = "/admin/index.php"
+  to = "/admin"
+  status = 301
