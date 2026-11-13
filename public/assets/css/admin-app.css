@@ -1,0 +1,47 @@
+/* App-specific bits on top of Vuexy (or the stand-in). */
+.brand-k { width: 32px; height: 32px; border-radius: 7px; background: #e3193b; color: #fff; display: grid; place-items: center; font-weight: 800; font-size: 18px; line-height: 1; }
+.view { display: none; }
+.view.is-active { display: block; }
+.menu-link .ext { margin-left: auto; opacity: .55; }
+.status-card .card-body { display: flex; flex-direction: column; gap: .75rem; }
+.status-card h4 { margin: 0; font-size: 1.25rem; overflow-wrap: anywhere; }
+.chip-list { display: flex; flex-wrap: wrap; gap: .375rem; }
+.chip { display: inline-flex; align-items: center; gap: .3rem; border-radius: .375rem; padding: .2rem .6rem; font-size: .8125rem; background: #f2f1fe; color: #5d53c9; }
+.chip.muted { background: #f1f2f4; color: #808390; }
+.chip b { font-weight: 600; }
+.tab-card + .tab-card { margin-top: 1.5rem; }
+.tab-card .det-grid { display: grid; grid-template-columns: max-content 1fr; gap: .5rem 1rem; align-items: start; font-size: .875rem; }
+.tab-card .det-grid dt { color: #808390; font-weight: 400; }
+.tab-card .det-grid dd { margin: 0; color: #444050; }
+.week-table td, .week-table th { white-space: nowrap; }
+.saved-pill { font-size: .8125rem; }
+.navbar-title { min-width: 0; }
+.navbar-title h5 { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+@media (max-width: 575.98px) { .navbar-title small { display: none; } }
+.stage-row { display: grid; grid-template-columns: minmax(160px, 1fr) minmax(220px, 1.2fr) auto; gap: .75rem 1rem; align-items: center; padding: .625rem 0; border-bottom: 1px solid #f1f0f2; }
+.stage-row:last-child { border-bottom: 0; }
+.stage-row .auto-note { font-size: .75rem; color: #808390; white-space: nowrap; }
+.stage-row .stage-name { color: #444050; font-weight: 500; }
+.stage-row .stage-name small { display: block; font-weight: 400; color: #acaab1; font-size: .75rem; }
+@media (max-width: 767.98px) { .stage-row { grid-template-columns: 1fr; } }
+
+/* ---------- settings layout ---------- */
+.settings-section + .settings-section { margin-top: 1.5rem; }
+.settings-section .card-header { border-bottom: 1px solid #efeef2; padding-bottom: 1rem; }
+.settings-section .card-header .avatar { width: 2.125rem; height: 2.125rem; }
+.settings-section .card-body { padding-top: 1.375rem; }
+.field-hint { display: flex; gap: .375rem; align-items: flex-start; }
+.setting-row { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: .875rem 1rem; border: 1px solid #e6e6e8; border-radius: .5rem; background: #fcfcfd; }
+.setting-row + .setting-row { margin-top: .75rem; }
+.setting-row .title { color: #444050; font-weight: 500; }
+.setting-row .desc { color: #8b8995; font-size: .8125rem; margin-top: .125rem; }
+.setting-row .form-switch { margin: 0; padding-left: 2.75rem; min-height: auto; }
+.preset-choices { display: flex; flex-wrap: wrap; gap: .5rem; }
+.preset-choices input { position: absolute; opacity: 0; pointer-events: none; }
+.preset-choices label { display: inline-flex; align-items: center; padding: .4375rem .875rem; border: 1px solid #d1d0d4; border-radius: 2rem; font-size: .875rem; color: #6d6b77; background: #fff; cursor: pointer; transition: all .15s; }
+.preset-choices label:hover { border-color: #7367f0; color: #7367f0; }
+.preset-choices input:checked + label { background: #7367f0; border-color: #7367f0; color: #fff; box-shadow: 0 2px 6px rgba(115,103,240,.3); }
+.preset-choices input:focus-visible + label { outline: 2px solid #7367f0; outline-offset: 2px; }
+.form-actions { display: flex; align-items: center; gap: .75rem; margin-top: 1.5rem; }
+.errlog { font: 12px/1.55 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; background: #fbfbfc; border: 1px solid #e6e6e8; border-radius: .5rem; padding: .75rem 1rem; max-height: 320px; overflow: auto; color: #444050; }
+.errlog div + div { border-top: 1px dashed #e6e6e8; margin-top: .375rem; padding-top: .375rem; }
