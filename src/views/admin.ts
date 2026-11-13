@@ -7,6 +7,7 @@ import { CAT_LABELS } from '../lib/classify.js';
 import { AD_CHANNELS, adsConfigured, channelOf, type Channel } from '../lib/ads.js';
 import { jobberConnected, jobberCallbackUrl } from '../lib/jobber.js';
 import { e, money, num, ymdObj, daysBetween } from '../lib/util.js';
+import { logoImg } from './common.js';
 import { DateTime } from 'luxon';
 
 export const PAGES: Record<string, [string, string, string]> = {
@@ -51,7 +52,7 @@ export function gatePage(S: Settings, csrf: string, page: string, flashes: [stri
   const first = !S.adminHash; const company = S.display.company || 'Keil Electric';
   return head(first ? 'Create admin password' : 'Admin sign in', true)
     + `<div class="container-xxl"><div class="authentication-wrapper authentication-basic container-p-y"><div class="authentication-inner py-6"><div class="card"><div class="card-body">`
-    + `<div class="app-brand justify-content-center mb-6 px-0"><span class="app-brand-link"><span class="app-brand-logo demo"><span class="brand-k">${e(company.slice(0, 1).toUpperCase())}</span></span><span class="app-brand-text demo text-heading fw-bold ms-3">${e(company)}</span></span></div>`
+    + `<div class="app-brand justify-content-center mb-6 px-0"><span class="app-brand-link admin-logo admin-logo-lg">${logoImg(S)}</span></div>`
     + `<h4 class="mb-1">${first ? 'Create the admin password' : 'Admin sign in'}</h4><p class="mb-6">${first ? 'First time here. Choose a password (8+ characters) to protect the admin panel.' : 'Enter the admin password.'}</p>`
     + flashes.map(([k, m]) => alertBox(e(m), k)).join('')
     + `<form method="post" action="/admin?page=${e(page)}">${csrf}<input type="hidden" name="do" value="${first ? 'setup' : 'login'}">`
@@ -71,7 +72,7 @@ export function adminFrame(S: Settings, page: string, csrf: string, flashes: [st
     + '<li class="menu-item"><a href="/pipelines" target="_blank" rel="noopener" class="menu-link"><i class="menu-icon kicon kicon-list-details"></i><div>Pipeline board</div><i class="kicon kicon-xs kicon-external-link ext"></i></a></li>';
   return head(PAGES[page][0] + ' – Admin', false)
     + '<div class="layout-wrapper layout-content-navbar"><div class="layout-container"><aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme"><div class="app-brand demo">'
-    + `<a href="/admin" class="app-brand-link"><span class="app-brand-logo demo"><span class="brand-k">${e(company.slice(0, 1).toUpperCase())}</span></span><span class="app-brand-text demo menu-text fw-bold ms-3">${e(company)}</span></a>`
+    + `<a href="/admin" class="app-brand-link admin-logo" aria-label="${e(company)} admin">${logoImg(S)}</a>`
     + '<a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-xl-none" aria-label="Close menu"><i class="kicon kicon-x"></i></a></div><div class="menu-inner-shadow"></div>'
     + `<ul class="menu-inner py-1">${menu}</ul></aside><div class="layout-page">`
     + '<nav class="layout-navbar container-xxl navbar-detached navbar navbar-expand-xl align-items-center bg-navbar-theme" id="layout-navbar"><div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none"><a class="nav-item nav-link px-0 me-xl-6" href="javascript:void(0)" aria-label="Open menu"><i class="kicon kicon-menu-2"></i></a></div>'

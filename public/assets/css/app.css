@@ -292,3 +292,13 @@ a.btn { display: inline-flex; align-items: center; text-decoration: none; color:
 .spendtable .muted-row td { color: var(--muted); }
 .spendtable .muted-row td[colspan] { text-align: left; font-size: 12px; }
 .dot { display: inline-block; width: 9px; height: 9px; border-radius: 50%; margin-right: 7px; vertical-align: 1px; }
+
+/* ---------- Keil Electric logo in the dark header: on a white panel so the black letters stay visible ---------- */
+.brand-logo-wrap { background: #fff; border-radius: 10px; padding: 7px 12px; line-height: 0; box-shadow: 0 1px 0 rgba(255,255,255,.08), 0 2px 8px rgba(0,0,0,.25); justify-self: start; }
+.brand-logo-wrap:hover { box-shadow: 0 0 0 2px rgba(227,25,59,.55), 0 2px 8px rgba(0,0,0,.25); }
+.brand-logo-wrap:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+.brand-logo { display: block; height: 46px; width: auto; }
+@media (max-width: 760px) {
+  .brand-logo-wrap { padding: 6px 10px; justify-self: center; }
+  .brand-logo { height: 36px; }
+}

@@ -45,3 +45,8 @@
 .form-actions { display: flex; align-items: center; gap: .75rem; margin-top: 1.5rem; }
 .errlog { font: 12px/1.55 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; background: #fbfbfc; border: 1px solid #e6e6e8; border-radius: .5rem; padding: .75rem 1rem; max-height: 320px; overflow: auto; color: #444050; }
 .errlog div + div { border-top: 1px dashed #e6e6e8; margin-top: .375rem; padding-top: .375rem; }
+
+/* Keil Electric logo in the admin sidebar and on the sign-in page */
+.admin-logo { line-height: 0; }
+.admin-logo .brand-logo { display: block; height: 36px; width: auto; max-width: 100%; }
+.admin-logo-lg .brand-logo { height: 56px; }

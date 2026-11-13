@@ -6,11 +6,10 @@ import { e, money, ymdObj, daysBetween } from '../lib/util.js';
 import { DateTime } from 'luxon';
 
 export function reportTitle(S: Settings): string { const D = S.display; return (D.region ? D.region + ' – ' : '') + D.title; }
+/** The Keil Electric logo (transparent; shown on a white panel in the dark header). */
+export function logoImg(S: Settings): string { return '<picture><source srcset="/assets/img/keil-electric-logo.webp" type="image/webp"><img class="brand-logo" src="/assets/img/keil-electric-logo.png" alt="' + e(S.display.company || 'Keil Electric') + '" width="469" height="150"></picture>'; }
 export function topbar(S: Settings, active: 'scorecard' | 'pipelines', title: string, subtitle: string): string {
-  const parts = (S.display.company.trim() || 'Keil').split(/\s+/);
-  const last = parts.length > 1 ? parts.pop() as string : '';
-  const mark = (S.display.company.trim() || 'K').slice(0, 1).toUpperCase();
-  return `<header class="topbar"><a class="brand" href="/"><div class="brand-mark">${e(mark)}</div><div class="brand-name">${e(parts.join(' '))}${last ? ' <span>' + e(last) + '</span>' : ''}</div></a>`
+  return `<header class="topbar"><a class="brand brand-logo-wrap" href="/" aria-label="${e(S.display.company || 'Keil Electric')} — report home">${logoImg(S)}</a>`
     + `<div class="title"><h1>${e(title)}</h1><p>${subtitle ? e(subtitle) : '&nbsp;'}</p></div>`
     + `<nav class="nav" aria-label="Pages"><a href="/"${active === 'scorecard' ? ' aria-current="page"' : ''}>Scorecard</a><a href="/pipelines"${active === 'pipelines' ? ' aria-current="page"' : ''}>Pipelines</a><a href="/admin">Admin</a></nav></header>`;
 }
